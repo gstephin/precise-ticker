@@ -14,9 +14,9 @@ import com.tickerapp.databinding.ListItemBinding
 Created by steph on 11/23/2021
 
 */
-class TickerRecyclerViewAdapter() :
+class TickerRecyclerViewAdapter :
     RecyclerView.Adapter<TickerRecyclerViewAdapter.MyviewHolder>() {
-    private var tickerData: List<TickerData>?= mutableListOf()
+    private var tickerData: List<TickerData>? = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyviewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -31,8 +31,20 @@ class TickerRecyclerViewAdapter() :
         fun bind(data: TickerData?) {
             binding.tvCoinPrice.setCharacterLists(TickerUtils.provideNumberList())
 
+            if (binding.tvCoinPrice.tag != null) {
+
+                val tempPrice = binding.tvCoinPrice.tag as Float
+                if (tempPrice < data?.price?.toFloat()!!)
+                    binding.ivArrow.setImageResource(R.drawable.arrow_down)
+                else
+                    binding.ivArrow.setImageResource(R.drawable.arrow_up)
+
+            }
+
             binding.tvCoinId.text = "Pair id - " + data?.id
             binding.tvCoinPrice.text = "$" + data?.price
+            binding.tvCoinPrice.tag = data?.price?.toFloat()
+
         }
     }
 
