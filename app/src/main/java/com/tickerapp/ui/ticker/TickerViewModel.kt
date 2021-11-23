@@ -1,14 +1,15 @@
 package com.tickerapp.ui.ticker
 
 import android.app.Application
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import androidx.databinding.Observable
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import kotlinx.coroutines.delay
+import androidx.lifecycle.viewModelScope
+import com.tickerapp.database.TickerRepository
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import org.java_websocket.client.WebSocketClient
 import org.java_websocket.handshake.ServerHandshake
 import org.json.JSONArray
@@ -16,10 +17,14 @@ import org.json.JSONObject
 import java.net.URI
 
 
-class TickerViewModel(application: Application) :
+class TickerViewModel(
+    private val tickerDataRepository: TickerRepository,
+    application: Application
+) :
     AndroidViewModel(application), Observable {
     private var mWebSocketClient: WebSocketClient? = null
     private val _tickerData = MutableLiveData<Int>()
+     var tickerDataList = tickerDataRepository.dataList
 
     val tickerData: LiveData<Int>
         get() = _tickerData
@@ -27,6 +32,7 @@ class TickerViewModel(application: Application) :
     init {
         Log.i("MYTAG", "init")
     }
+
     fun getData() {
 
         val uri = URI("wss://api2.poloniex.com")
@@ -50,7 +56,10 @@ class TickerViewModel(application: Application) :
                     val jsonArrayInner = JSONArray(string)
                     val data = jsonArrayInner[0].toString()
 
-                        _tickerData.postValue(data.toInt())
+                    val tickerObject = TickerData(data.toInt(), jsonArrayInner[1].toString())
+                    insert(tickerObject)
+
+                   // _tickerData.postValue(data.toInt())
 
                     Log.d("message", s.toString())
 
@@ -71,6 +80,11 @@ class TickerViewModel(application: Application) :
         mWebSocketClient?.connect()
 
     }
+
+    private fun insert(user: TickerData): Job = viewModelScope.launch {
+        tickerDataRepository.insert(user)
+    }
+
 
     override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
 

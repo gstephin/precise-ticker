@@ -5,8 +5,9 @@
       <map>
         <entry key="..\:/Demo projects/test/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Demo projects/test/app/src/main/res/layout/activity_ticker_data.xml" value="0.1" />
-        <entry key="..\:/Demo projects/test/app/src/main/res/layout/fragment_login.xml" value="0.1" />
+        <entry key="..\:/Demo projects/test/app/src/main/res/layout/fragment_login.xml" value="0.16666666666666666" />
         <entry key="..\:/Demo projects/test/app/src/main/res/layout/fragment_ticker.xml" value="0.14666666666666667" />
+        <entry key="..\:/Demo projects/test/app/src/main/res/layout/list_item.xml" value="0.3333333333333333" />
         <entry key="..\:/Demo projects/test/app/src/main/res/layout/user_details_fragment.xml" value="0.16666666666666666" />
       </map>
     </option>

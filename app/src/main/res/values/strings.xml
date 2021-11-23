@@ -27,4 +27,5 @@
     <string name="Login_text">Login</string>
     <string name="Login_button">Login</string>
     <string name="signupText">Sign Up!</string>
+    <string name="precise_ticker">Precise Ticker</string>
 </resources>

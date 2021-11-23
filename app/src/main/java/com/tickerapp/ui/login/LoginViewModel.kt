@@ -16,7 +16,6 @@ import kotlinx.coroutines.launch
 class LoginViewModel(private val repository: RegisterRepository, application: Application) :
     AndroidViewModel(application), Observable {
 
-    val users = repository.users
 
     @Bindable
     val inputUsername = MutableLiveData<String>()

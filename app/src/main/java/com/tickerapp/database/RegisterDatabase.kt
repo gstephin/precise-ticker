@@ -4,11 +4,13 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.tickerapp.ui.ticker.TickerData
 
-@Database(entities = [RegisterEntity::class], version = 1, exportSchema = false)
+@Database(entities = [RegisterEntity::class, TickerData::class], version = 1, exportSchema = false)
 abstract class RegisterDatabase : RoomDatabase() {
 
     abstract val registerDatabaseDao: RegisterDatabaseDao
+    abstract val tickerDatabaseDao: TickerDatabaseDao
 
     companion object {
 

@@ -57,7 +57,7 @@ class LoginFragment : Fragment() {
             navigateUserDetails()
 
 
-        loginViewModel.errotoast.observe(viewLifecycleOwner, Observer { hasError ->
+        loginViewModel.errotoast.observe(viewLifecycleOwner, { hasError ->
             if (hasError == true) {
                 Toast.makeText(requireContext(), "Please fill all fields", Toast.LENGTH_SHORT)
                     .show()
@@ -65,7 +65,7 @@ class LoginFragment : Fragment() {
             }
         })
 
-        loginViewModel.errotoastUsername.observe(viewLifecycleOwner, Observer { hasError ->
+        loginViewModel.errotoastUsername.observe(viewLifecycleOwner, { hasError ->
             if (hasError == true) {
                 Toast.makeText(
                     requireContext(),
@@ -76,7 +76,7 @@ class LoginFragment : Fragment() {
             }
         })
 
-        loginViewModel.errorToastInvalidPassword.observe(viewLifecycleOwner, Observer { hasError ->
+        loginViewModel.errorToastInvalidPassword.observe(viewLifecycleOwner, { hasError ->
             if (hasError == true) {
                 Toast.makeText(requireContext(), "Please check your Password", Toast.LENGTH_SHORT)
                     .show()
@@ -84,7 +84,7 @@ class LoginFragment : Fragment() {
             }
         })
 
-        loginViewModel.navigatetoUserDetails.observe(viewLifecycleOwner, Observer { hasFinished ->
+        loginViewModel.navigatetoUserDetails.observe(viewLifecycleOwner, { hasFinished ->
             if (hasFinished == true) {
                 Log.i("MYTAG", "insidi observe")
                 navigateUserDetails()
@@ -98,7 +98,6 @@ class LoginFragment : Fragment() {
 
 
     private fun displayUsersList() {
-        Log.i("MYTAG", "insidisplayUsersList")
         val action = LoginFragmentDirections.actionLoginFragmentToHomeFragment()
         NavHostFragment.findNavController(this).navigate(action)
 

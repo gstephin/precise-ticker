@@ -10,6 +10,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         @Suppress("UNUSED VARIABLE")
         val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this,R.layout.activity_main)
+        supportActionBar?.hide()
 
     }
 
