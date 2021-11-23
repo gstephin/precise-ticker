@@ -29,7 +29,7 @@ class TickerRecyclerViewAdapter :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(data: TickerData?) {
-            binding.tvCoinPrice.setCharacterLists(TickerUtils.provideNumberList())
+         //   binding.tvCoinPrice.setCharacterLists(TickerUtils.provideNumberList())
 
             if (binding.tvCoinPrice.tag != null) {
 

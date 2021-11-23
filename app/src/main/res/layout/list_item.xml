@@ -38,8 +38,7 @@
                     app:layout_constraintTop_toTopOf="@+id/tvCoinPrice"
                     tools:srcCompat="@tools:sample/avatars" />
 
-                <com.robinhood.ticker.TickerView
-
+                <TextView
                     android:id="@+id/tvCoinPrice"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -56,7 +55,7 @@
                     app:layout_constraintEnd_toStartOf="@+id/ivArrow"
                     app:layout_constraintStart_toEndOf="@+id/tvCoinId"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:ticker_animationDuration="1200" />
+                />
 
                 <TextView
                     android:id="@+id/tvCoinId"
